@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { callApi } from './api';
-import { AccountForm, Posts, SinglePost, NewPostForm, inbox} from './components';
+import { AccountForm, Posts, SinglePost, NewPostForm, Inbox,} from './components';
 
 
 
@@ -51,14 +52,15 @@ const App = () => {
 
   return (
     <>
+      <BrowserRouter>
       <h1>Stranger's Things</h1>
       <span>
       <Link to="/">Home</Link>
       <Link to="/login">Login</Link>
       <Link to="/posts/new">Add A Post</Link>
       <Link to="/posts">See All Post</Link>
-      <Link to="/inbox">Inbox</Link>
-       </span>
+      
+      </span>
     
       <Switch>
         <Route exact path="/">
@@ -100,14 +102,11 @@ const App = () => {
             setUserData={setUserData}
           />
         </Route>
-        <Route exact path='/messages'>
-            <Messages 
-              token={token}
-              userData={userData}
-            />
-          </Route>
-      </Switch>
+        
+        </Switch>
+        </BrowserRouter>
     </>
+    
   );
 };
 

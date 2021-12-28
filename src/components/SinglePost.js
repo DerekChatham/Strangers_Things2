@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
+
 const SinglePost = ({ posts }) => {
   const { postId } = useParams();
   const post = posts.find((post) => postId === post._id);
@@ -10,6 +11,7 @@ const SinglePost = ({ posts }) => {
     try {
       const response = await fetch(`${BASE_URL}/posts/${post._id}` , {
         method: "DELETE",
+        token,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem("token")}`
