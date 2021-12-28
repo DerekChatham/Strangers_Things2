@@ -1,0 +1,52 @@
+* {
+    background-color: lightgray;
+
+}
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+    align-content: center;
+    
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: blue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+div {
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 24px;
+
+}
+
+a {
+    padding: 10px;
+    border: 2px solid blue;
+    color: blue;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+h5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
