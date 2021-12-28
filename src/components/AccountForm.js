@@ -34,7 +34,7 @@ const AccountForm = ({ action, setToken, setUserData }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="username"
+          placeholder="stuff"
           required
           onChange={(event) => setUsername(event.target.value)}
         ></input>
