@@ -16,14 +16,10 @@ const SinglePost = ({ posts }) => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem("token")}`
         }
-
+      
       })
-
-      const data = await response.json();
-
-        
-    } catch (error) {
-      console.log(error);
+      } catch (error) {
+      console.error("Cannot Delete Post");
     }
   }
 
@@ -38,6 +34,7 @@ const SinglePost = ({ posts }) => {
           <p>Delivers: {post.willDeliver ? 'Yes' : 'No'}</p>
           <div>
             <button onClick={deletePost}>Delete Post</button>
+            
           </div>
         </div>
       ) : (

@@ -52,14 +52,13 @@ const App = () => {
 
   return (
     <>
-      <BrowserRouter>
+      <Router>
       <h1>Stranger's Things</h1>
       <span>
       <Link to="/">Home</Link>
       <Link to="/login">Login</Link>
       <Link to="/posts/new">Add A Post</Link>
       <Link to="/posts">See All Post</Link>
-      
       </span>
     
       <Switch>
@@ -102,9 +101,8 @@ const App = () => {
             setUserData={setUserData}
           />
         </Route>
-        
-        </Switch>
-        </BrowserRouter>
+     </Switch>
+    </Router>
     </>
     
   );
