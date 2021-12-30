@@ -59,6 +59,7 @@ const App = () => {
       <Link to="/login">Login</Link>
       <Link to="/posts/new">Add A Post</Link>
       <Link to="/posts">See All Post</Link>
+      <Link to="/inbox2">Inbox</Link>
       </span>
     
       <Switch>
