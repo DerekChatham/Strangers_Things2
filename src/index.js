@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { callApi } from './api';
-import { AccountForm, Posts, SinglePost, NewPostForm,} from './components';
+import { AccountForm, Posts, SinglePost, NewPostForm} from './components';
 
 
 
@@ -59,7 +58,7 @@ const App = () => {
       <Link to="/login" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Login</Link>
       <Link to="/posts/new" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Add A Post</Link>
       <Link to="/posts" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>See All Post</Link>
-      <Link to="/inbox" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Inbox</Link>
+      <Link to="/messages" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Messages</Link>
       
       </div>
       
@@ -109,9 +108,6 @@ const App = () => {
             setUserData={setUserData}
           />
           <div className='loginpic'><img src='/login.png'/></div>
-        </Route>
-        <Route path="/inbox">
-          <h2>Messages</h2>
         </Route>
      </Switch>
     </Router>

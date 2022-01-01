@@ -57,6 +57,7 @@ const Posts = ({ posts }) => {
   const postsToDisplay = posts.filter((post) => postMatches(post, searchTerm));
   return (
     <>
+   
       <div style={styles.searchContainer}>
         <h2>Posts</h2>
         <input
@@ -70,6 +71,7 @@ const Posts = ({ posts }) => {
           }}
         ></input>
       </div>
+      <div className='postspage'>
       {postsToDisplay.length ? (
         postsToDisplay.map((post) => (
           <div key={post._id} style={{ border: '1px solid black' }}>
@@ -82,12 +84,14 @@ const Posts = ({ posts }) => {
               View Post
             </button>
             <button onClick={deletePost}>Delete Post</button>
+            
             </div>
           </div>
         ))
       ) : (
         <div>No posts to display</div>
       )}
+     </div>
     </>
   );
 };

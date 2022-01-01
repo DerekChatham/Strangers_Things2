@@ -68,3 +68,13 @@ form {
     justify-content: center;
     margin-top: 48px;
 }
+
+.postspage {
+    border: 2px red solid;
+}
+
+div {
+    padding: 8px;
+   
+}
+
