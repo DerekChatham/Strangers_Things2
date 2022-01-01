@@ -1,0 +1,20 @@
+body {
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+    background-color: #95424E;
+}
+
+.homepage {
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 64px;
+}

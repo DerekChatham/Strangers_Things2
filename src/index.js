@@ -53,18 +53,19 @@ const App = () => {
   return (
     <>
       <Router>
-      <h1>Stranger's Things</h1>
-      <span>
-      <Link to="/">Home</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/posts/new">Add A Post</Link>
-      <Link to="/posts">See All Post</Link>
-      <Link to="/inbox2">Inbox</Link>
-      </span>
-    
+      <div className='header'>
+      <h1 className='title'>Stranger's Things</h1>
+      <Link to="/" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Home</Link>
+      <Link to="/login" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Login</Link>
+      <Link to="/posts/new" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Add A Post</Link>
+      <Link to="/posts" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>See All Post</Link>
+      <Link to="/inbox" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Inbox</Link>
+      </div>
+      
       <Switch>
         <Route exact path="/">
-          {userData.username && <div>Hello {userData.username}</div>}
+          {userData.username && <div className='homepage'>Hello {userData.username}
+          </div>}
         </Route>
         <Route exact path="/posts">
           <Posts posts={posts} />
@@ -101,6 +102,9 @@ const App = () => {
             setToken={setToken}
             setUserData={setUserData}
           />
+        </Route>
+        <Route path="/inbox">
+          <h2>Messages</h2>
         </Route>
      </Switch>
     </Router>
