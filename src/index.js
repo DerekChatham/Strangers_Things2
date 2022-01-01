@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { callApi } from './api';
-import { AccountForm, Posts, SinglePost, NewPostForm} from './components';
+import { AccountForm, Posts, SinglePost, NewPostForm, Messages} from './components';
 
 
 
@@ -109,6 +109,12 @@ const App = () => {
           />
           <div className='loginpic'><img src='/login.png'/></div>
         </Route>
+        <Route path='/Messages'>
+            <Messages 
+              token={token}
+              userData={userData}
+            />
+          </Route>
      </Switch>
     </Router>
     </>
