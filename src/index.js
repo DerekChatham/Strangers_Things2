@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { callApi } from './api';
-import { AccountForm, Posts, SinglePost, NewPostForm, Inbox,} from './components';
+import { AccountForm, Posts, SinglePost, NewPostForm,} from './components';
 
 
 
@@ -60,12 +60,16 @@ const App = () => {
       <Link to="/posts/new" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Add A Post</Link>
       <Link to="/posts" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>See All Post</Link>
       <Link to="/inbox" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Inbox</Link>
+      
       </div>
       
       <Switch>
         <Route exact path="/">
-          {userData.username && <div className='homepage'>Hello {userData.username}
+          {userData.username && <div className='homepage'>Hello {userData.username}<div>
+            <span>Not You? <button className='logout' title='LOGOUT'>LOGOUT</button></span>
+          </div>
           </div>}
+          <div className='welcome'><img src='/welcome.jpg'/></div>
         </Route>
         <Route exact path="/posts">
           <Posts posts={posts} />
@@ -77,6 +81,7 @@ const App = () => {
             posts={posts}
             action="add"
           />
+          <div className='sellpic'><img src='/sell.jpg'/></div>
         </Route>
         <Route path="/posts/:postId/edit">
           <NewPostForm
@@ -85,6 +90,7 @@ const App = () => {
             posts={posts}
             action="edit"
           />
+          
         </Route>
         <Route path="/posts/:postId">
           <SinglePost posts={posts} />
@@ -102,6 +108,7 @@ const App = () => {
             setToken={setToken}
             setUserData={setUserData}
           />
+          <div className='loginpic'><img src='/login.png'/></div>
         </Route>
         <Route path="/inbox">
           <h2>Messages</h2>
