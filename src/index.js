@@ -49,7 +49,11 @@ const App = () => {
     setPosts(posts);
   }, []);
 
-
+function logout() {
+  localStorage.clear()
+  setToken('')
+  setUserData({})
+}
 
   return (
     <>
@@ -57,20 +61,18 @@ const App = () => {
       <div className='header'>
       <h1 className='title'>Stranger's Things</h1>
       <Link to="/" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Home</Link>
-      <Link to="/login" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Login</Link>
-      <Link to="/posts/new" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Add A Post</Link>
+      { !token ?<Link to="/login" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Login</Link>:null}
+      { token ?<Link to="/posts/new" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Add A Post</Link>:null}
       <Link to="/posts" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>See All Post</Link>
       
-      <Link to="/profile" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Profile</Link>
+      { token ? <Link to="/profile" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Profile</Link>:null}
       
       </div>
       
       <Switch>
         <Route exact path="/">
-          {userData.username && <div className='homepage'>Hello {userData.username}<div>
-            <span>Not You? <button onClick={logout()} className='logout' title='LOGOUT'>LOGOUT</button></span>
-              
-          </div>
+          {userData.username && <div className='homepage'>Hello {userData.username}
+          { token ? <p>NOT YOU?<button className='deleteButton' onClick={logout}>LOGOUT</button></p> :null}
           </div>}
           <div className='welcome'><img src='/welcome.jpg'/></div>
         </Route>

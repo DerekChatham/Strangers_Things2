@@ -8,11 +8,7 @@ const Messages = ({ token, userData }) => {
     try {
       const userMessages = userData.messages;
       setMessages(userMessages);
-      console.log(
-        myMessages.map((message) => {
-          console.log(message.fromUser.username);
-        })
-      );
+      
       return;
     } catch (error) {
       console.log("error getting messages", error);

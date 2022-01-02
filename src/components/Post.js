@@ -67,7 +67,7 @@ const Posts = ({ posts }) => {
           placeholder="search for posts"
           value={searchTerm}
           onChange={(event) => {
-            console.log(event.target.value);
+           
             setSearchTerm(event.target.value);
           }}
         ></input>
