@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { callApi } from './api';
-import { AccountForm, Posts, SinglePost, NewPostForm, Messages} from './components';
+import { AccountForm, Posts, SinglePost, NewPostForm, Messages, Profile, SendMessage} from './components';
 
 
 
@@ -13,6 +13,7 @@ const App = () => {
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState({});
   const [posts, setPosts] = useState([]);
+  const [messages, setMessages] = useState([]);
 
   const fetchUserData = async (token) => {
     const { data } = await callApi({
@@ -32,8 +33,7 @@ const App = () => {
   };
 
   useEffect(async () => {
-    // const posts = await fetchPosts();
-    // setPosts(posts);
+
     if (!token) {
       setToken(localStorage.getItem('token'));
       return;
@@ -49,6 +49,8 @@ const App = () => {
     setPosts(posts);
   }, []);
 
+
+
   return (
     <>
       <Router>
@@ -58,14 +60,16 @@ const App = () => {
       <Link to="/login" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Login</Link>
       <Link to="/posts/new" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Add A Post</Link>
       <Link to="/posts" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>See All Post</Link>
-      <Link to="/messages" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Messages</Link>
+      
+      <Link to="/profile" style={{textDecoration: 'none', color: 'black', fontSize: "1.5em"}}>Profile</Link>
       
       </div>
       
       <Switch>
         <Route exact path="/">
           {userData.username && <div className='homepage'>Hello {userData.username}<div>
-            <span>Not You? <button className='logout' title='LOGOUT'>LOGOUT</button></span>
+            <span>Not You? <button onClick={logout()} className='logout' title='LOGOUT'>LOGOUT</button></span>
+              
           </div>
           </div>}
           <div className='welcome'><img src='/welcome.jpg'/></div>
@@ -92,7 +96,15 @@ const App = () => {
           
         </Route>
         <Route path="/posts/:postId">
-          <SinglePost posts={posts} />
+          <SinglePost 
+          posts={posts} 
+          userData={userData}
+          token= {token}
+          setPosts={setPosts}
+          />
+        </Route>
+        <Route path='/posts/:postId/messages'>
+          {token ? <SendMessage posts={posts} token={token} messages={messages} setMessages={setMessages}/> : ''}
         </Route>
         <Route path="/register">
           <AccountForm
@@ -115,6 +127,12 @@ const App = () => {
               userData={userData}
             />
           </Route>
+        <Route path='/Profile'>
+          <Profile
+            token={token}
+            userData={userData}
+          />
+        </Route>
      </Switch>
     </Router>
     </>

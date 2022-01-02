@@ -1,41 +1,41 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { DeletePost, SendMessage } from '.';
 
-
-const SinglePost = ({ posts }) => {
+const SinglePost = ({ posts, userData, token, setPosts }) => {
+  
   const { postId } = useParams();
   const post = posts.find((post) => postId === post._id);
-  console.log('SINGLE POST', post);
+  const history = useHistory();
 
-  const deletePost = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/posts/${post._id}` , {
-        method: "DELETE",
-        token,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem("token")}`
-        }
-      
-      })
-      } catch (error) {
-      console.error("Cannot Delete Post");
-    }
-  }
-
+ const loggedUser = userData.username === post.author.username;
+  
   return (
     <>
       {post ? (
         <div>
-          <h3>{post.title}</h3>
+         <h3>{post.title}</h3>
           <p>Posted by: {post.author.username}</p>
           <p>Price: {post.price}</p>
           <p>Location: {post.location}</p>
           <p>Delivers: {post.willDeliver ? 'Yes' : 'No'}</p>
-          <div>
-            <button onClick={deletePost}>Delete Post</button>
-            
-          </div>
+          {loggedUser ? (
+            <>
+              <button variant='secondary' onClick={() => history.push(`${postId}/edit`)}>
+                Edit
+              </button>{' '}
+              <DeletePost token={token} postId={postId} setPosts={setPosts} />
+            </>
+          ) : (
+            ''
+          )}
+          {token ? (
+            <>
+              {!loggedUser ? <SendMessage token={token} postId={postId} /> : ''}
+            </>
+          ) : (
+            ''
+          )}
         </div>
       ) : (
         ''
@@ -43,5 +43,6 @@ const SinglePost = ({ posts }) => {
     </>
   );
 };
+          
 
 export default SinglePost;

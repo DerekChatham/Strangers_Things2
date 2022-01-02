@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 const styles = {
   searchContainer: {
@@ -54,6 +54,7 @@ const Posts = ({ posts }) => {
   const history = useHistory();
   const [searchTerm, setSearchTerm] = useState('');
 
+
   const postsToDisplay = posts.filter((post) => postMatches(post, searchTerm));
   return (
     <>
@@ -83,7 +84,7 @@ const Posts = ({ posts }) => {
             <button onClick={() => history.push(`/posts/${post._id}`)}>
               View Post
             </button>
-            <button onClick={deletePost}>Delete Post</button>
+            
             
             </div>
           </div>

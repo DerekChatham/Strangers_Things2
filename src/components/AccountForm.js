@@ -46,6 +46,7 @@ const AccountForm = ({ action, setToken, setUserData }) => {
         <button type="submit">{title}</button>
       </form>
       <Link to={`/${oppositeAction}`}>{oppositeTitle}</Link>
+      
     </>
   );
 };
