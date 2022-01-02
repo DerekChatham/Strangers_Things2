@@ -25,6 +25,7 @@ const DeletePost = ({ token, postId, setPosts, posts }) => {
     
     } catch (error) {
       console.error('Error deleting a post:', error);
+      
     }
   };
   
