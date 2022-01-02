@@ -24,7 +24,7 @@ const SinglePost = ({ posts, userData, token, setPosts }) => {
               <button variant='secondary' onClick={() => history.push(`${postId}/edit`)}>
                 Edit
               </button>{' '}
-              <DeletePost token={token} postId={postId} setPosts={setPosts} />
+              <DeletePost token={token} postId={postId} setPosts={setPosts} posts={posts} />
             </>
           ) : (
             ''

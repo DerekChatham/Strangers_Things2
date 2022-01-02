@@ -21,7 +21,7 @@ const DeletePost = ({ token, postId, setPosts, posts }) => {
       
       const remainingPost = posts.filter((post)=>post._id !== postId)
       setPosts(remainingPost);
-
+      
     
     } catch (error) {
       console.error('Error deleting a post:', error);
